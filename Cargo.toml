@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+serenity = "0.12.4"
+tokio = { version = "1", features = ["full"] }
+wol = "0.3.1"
+dotenv = "0.15"
