@@ -14,7 +14,7 @@ target
 **/mutants.out*/
 
 # Ignore environment ;)
-src/.env
+.env
 
 # RustRover
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

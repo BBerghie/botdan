@@ -1,16 +1,10 @@
-extern crate dotenv;
-
-use dotenv::dotenv;
 use std::env;
-use std::path::{Path};
+use dotenv::dotenv;
 
 fn main() {
-    println!("test");
-
-    let my_path = env::home_dir().and_then(|a| Some(a.join("/.env"))).unwrap();
-    dotenv::from_path(my_path.as_path());
-
-    for (k, v) in env::vars() {
-        println!("{}: {}", k, v);
-    }
+    dotenv().ok();
+    match env::var("MACHINE_MAC") {
+        Ok(machine_mac) => println!("the machine's mac is {}", machine_mac),
+        Err(e) => println!("Could't read machine_mac ({})", e),
+    };
 }
