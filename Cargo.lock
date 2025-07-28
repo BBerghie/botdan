@@ -111,6 +111,7 @@ name = "botdan"
 version = "0.1.0"
 dependencies = [
  "dotenvy",
+ "once_cell",
  "serenity",
  "tokio",
  "wol",
