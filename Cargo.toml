@@ -6,6 +6,6 @@ edition = "2024"
 [dependencies]
 serenity = "0.12.4"
 tokio = { version = "1", features = ["full"] }
-wol = "0.3.1"
 dotenvy = "0.15.7"    # To read from .env
 once_cell = "1.18"
+wol = "0.3.1"

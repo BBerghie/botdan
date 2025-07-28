@@ -13,7 +13,7 @@ impl Config {
         // Load the .env file
         dotenv().ok();
 
-        // Leer variables (con unwrap_or para dar errores claros)
+        //Read it
         let discord_token = env::var("DISCORD_TOKEN")?;
         let machine_mac = env::var("MACHINE_MAC")?;
 
@@ -24,6 +24,8 @@ impl Config {
     }
 }
 
+// Generating project level constants
+// // Generating project level constants 
 pub static CONFIG: Lazy<Config> = Lazy::new(|| {
     Config::from_env().expect("No se pudo cargar la configuración")
 });
