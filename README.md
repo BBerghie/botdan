@@ -5,5 +5,6 @@ discord bot thats magage a server
 
 > in ./.env
 
+
 DISCORD_TOKEN=
 MACHINE_MAC=
