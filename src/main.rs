@@ -9,6 +9,8 @@ use serenity::prelude::*;
 use std::str::FromStr;
 use std::net::Ipv4Addr;
 
+use std::process::Command;
+
 struct Handler;
 
 #[async_trait]
@@ -31,6 +33,20 @@ impl EventHandler for Handler {
             wol::send_magic_packet(mac_address, None, (Ipv4Addr::BROADCAST, 9).into()).unwrap();
 
             if let Err(why) = msg.channel_id.say(&ctx.http, "server on").await {
+                println!("Error sending message: {why:?}");
+            }
+        }
+        if msg.content=="!test-sh"{
+            let output = Command::new("sh")
+            .arg("-c")
+            .arg("echo hello")
+            .output()
+            .expect("failedlet output =  to execute process");
+      
+            let scriptResponse = output.stdout;
+            let response =  str::from_utf8(&scriptResponse);
+
+            if let Err(why) = msg.channel_id.say(&ctx.http, &response).await {
                 println!("Error sending message: {why:?}");
             }
         }
