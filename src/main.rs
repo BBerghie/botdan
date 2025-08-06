@@ -42,11 +42,17 @@ impl EventHandler for Handler {
             .arg("echo hello")
             .output()
             .expect("failedlet output =  to execute process");
-      
-            let scriptResponse = output.stdout;
-            let response =  str::from_utf8(&scriptResponse);
+         
 
-            if let Err(why) = msg.channel_id.say(&ctx.http, &response).await {
+            let script_response = match str::from_utf8(&output.stdout) {
+                Ok(v) => v,
+                Err(e) => {
+                    println!("Invalid UTF-8 sequence: {}", e);
+                    "Error al leer la salida del script"
+                }
+            };
+
+            if let Err(why) = msg.channel_id.say(&ctx.http, script_response).await {
                 println!("Error sending message: {why:?}");
             }
         }
