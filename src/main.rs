@@ -38,11 +38,9 @@ impl EventHandler for Handler {
         }
         if msg.content=="!test-sh"{
             let output = Command::new("sh")
-            .arg("-c")
-            .arg("echo hello")
-            .output()
-            .expect("failedlet output =  to execute process");
-         
+                .arg("/opt/git/botdan/scripts/test.sh")
+                .output()
+                .expect("failed to execute process");
 
             let script_response = match str::from_utf8(&output.stdout) {
                 Ok(v) => v,
