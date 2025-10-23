@@ -5,6 +5,8 @@ discord bot thats magage a server
 
 > in ./.env
 
+Previously you need to enable the "wake on lan" of the target pc.
 
 DISCORD_TOKEN=
+
 MACHINE_MAC=
