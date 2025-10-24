@@ -25,7 +25,6 @@ impl Config {
 }
 
 // Generating project level constants
-// // Generating project level constants 
 pub static CONFIG: Lazy<Config> = Lazy::new(|| {
-    Config::from_env().expect("No se pudo cargar la configuración")
+    Config::from_env().expect("One or more env's variable are not defined. Check the '.env.examaple' file.")
 });
